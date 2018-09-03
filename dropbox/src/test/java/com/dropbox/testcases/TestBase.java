@@ -28,8 +28,8 @@ public class TestBase {
 		case "chrome":
 			System.setProperty("webdriver.chrome.driver", "E:\\AutomationWorkSpace\\chromedriver.exe");
 			driver = new ChromeDriver();
-		case "firefox":
-			System.setProperty("webdriver.gecko.driver", "/home/user/bin");
+		case "ie":
+			System.setProperty("webdriver.ie.driver", "/home/user/bin");
 			driver = new FirefoxDriver();
 			default:
 				driver = new FirefoxDriver();
