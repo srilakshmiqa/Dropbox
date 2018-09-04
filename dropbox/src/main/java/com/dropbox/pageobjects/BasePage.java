@@ -17,8 +17,25 @@ public class BasePage {
 		this.driver =driver;
 	}
 	
-	@FindBy(id="sign-in")
-	public WebElement linkSigin;
+	@FindBy(linkText="Sign in")
+	public WebElement lnkSigin;
+	
+	@FindBy(name="login_email")
+	public WebElement txtUserName;
+	
+	@FindBy(name="login_password")
+	public WebElement txtPassword;
+	
+	@FindBy(className="signin-text")
+	public WebElement btnLogin;
 	
 	
+	
+	public void userLogin(String name, String password) {
+		txtUserName.clear();
+		txtUserName.sendKeys(name);
+		txtPassword.clear();
+		txtPassword.sendKeys(password);
+		btnLogin.click();
+	}
 }
