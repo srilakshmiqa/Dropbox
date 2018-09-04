@@ -9,11 +9,11 @@ import org.openqa.selenium.support.FindBy;
  * @author srilakshmik
  *
  */
-public class BaseClass {
+public class BasePage {
 
 	protected WebDriver driver =null;
 	
-	public BaseClass(WebDriver driver) {
+	public BasePage(WebDriver driver) {
 		this.driver =driver;
 	}
 	

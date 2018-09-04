@@ -34,6 +34,7 @@ public class TestBase {
 			default:
 				driver = new FirefoxDriver();
 		}
+	  driver.get("https://dropbox.com");
 	  
   }
 

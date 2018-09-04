@@ -1,5 +1,5 @@
 package com.dropbox.pageobjects;
 
-public class LoginBase {
+public class LoginPage {
 
 }
