@@ -1,25 +1,26 @@
 package com.dropbox.testcases;
 
 import java.io.File;
+import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.ie.InternetExplorerDriver;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Optional;
 import org.testng.annotations.Parameters;
-import org.testng.annotations.Test;
-
-import com.beust.jcommander.Parameter;
 
 public class TestBase {
 	
 	WebDriver driver;
+	protected WebDriverWait wait = null;
 	@Parameters({"browserName"})
   @BeforeSuite
   public void driveSetup(@Optional("chrome")String  bname) {
@@ -29,12 +30,14 @@ public class TestBase {
 			System.setProperty("webdriver.chrome.driver", "E:\\AutomationWorkSpace\\chromedriver.exe");
 			driver = new ChromeDriver();
 		case "ie":
-			System.setProperty("webdriver.ie.driver", "/home/user/bin");
-			driver = new FirefoxDriver();
+			System.setProperty("webdriver.ie.driver", "E:\\AutomationWorkSpace\\internetexplorer.exe");
+			driver = new InternetExplorerDriver();
 			default:
+				System.setProperty("webdriver.geko.driver", "E:\\AutomationWorkSpace\\geko.exe");
 				driver = new FirefoxDriver();
 		}
 	  driver.get("https://dropbox.com");
+	  driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 	  
   }
 
@@ -70,8 +73,8 @@ public class TestBase {
 	public  boolean takeScreenshot(final String name) throws Exception {
 
 		String destDir = "";
-		//destDir = "screenshots/failed";
-		destDir = "target/surefire-reports/screenshots";
+		destDir = "screenshots/failed";
+		//destDir = "target/surefire-reports/screenshots";
 		new File(destDir).mkdirs();
 		File screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
 		System.out.println("Taken Screenshot");

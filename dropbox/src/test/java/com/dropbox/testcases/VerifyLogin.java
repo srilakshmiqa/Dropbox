@@ -1,7 +1,9 @@
 package com.dropbox.testcases;
 
 import org.openqa.selenium.support.PageFactory;
+import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Optional;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
@@ -13,10 +15,12 @@ public class VerifyLogin extends TestBase{
 	public void objectsIntialization() {
 		basePage = PageFactory.initElements(driver, BasePage.class);
 	}
-	
-  @Test
-  public void verifyLogin() {
-	  System.out.println("test");
-	  basePage.userLogin("test", "test");
-  }
+	@Parameters({"usrName","usrPassword"})
+	@Test
+	public void verifyLogin(@Optional("usename")String uname, @Optional("password")String pwd) {
+		System.out.println("test");
+		basePage.lnkSigin.click();
+		basePage.userLogin(uname, pwd);
+		Assert.assertTrue(basePage.lnkUsrProfile.isDisplayed());
+	}
 }
