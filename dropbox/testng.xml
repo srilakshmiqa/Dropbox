@@ -1,13 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="Suite">
-<parameter name="browserName" value="chrome"></parameter>
+ <parameter name="browserName" value="chrome"></parameter>
+  <parameter name="usrName" value="xxxx"></parameter>
+  <parameter name="usrPassword" value="xxx"></parameter>
+   <parameter name="filePath" value="c:\\file"></parameter>
   <test name="Test">
    <classes>
    <class name="com.dropbox.testcases.VerifyLogin"/>
-   <class name="com.dropbox.testcases.VerifyLogin"/>
-
-   <class name="com.dropbox.testcases.VerifyLogin"/>
+   <class name="com.dropbox.testcases.VerifyFileUpload"/>
+   <class name="com.dropbox.testcases.VerifyCreateFolder"/>
+   <class name="com.dropbox.testcases.VerifyLogout"/>
    </classes>
   </test> <!-- Test -->
 </suite> <!-- Suite -->

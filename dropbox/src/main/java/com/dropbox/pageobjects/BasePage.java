@@ -3,6 +3,8 @@ package com.dropbox.pageobjects;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 /**
  * 
@@ -12,7 +14,7 @@ import org.openqa.selenium.support.FindBy;
 public class BasePage {
 
 	protected WebDriver driver =null;
-	
+	protected WebDriverWait wait = null;
 	public BasePage(WebDriver driver) {
 		this.driver =driver;
 	}
@@ -29,13 +31,32 @@ public class BasePage {
 	@FindBy(className="signin-text")
 	public WebElement btnLogin;
 	
+	@FindBy(className="mc-avatar")
+	public WebElement lnkUsrProfile;
 	
+	@FindBy(className="mc-account-menu-item")
+	public WebElement lnkLogout;
 	
 	public void userLogin(String name, String password) {
-		txtUserName.clear();
-		txtUserName.sendKeys(name);
-		txtPassword.clear();
-		txtPassword.sendKeys(password);
-		btnLogin.click();
+		boolean isSigninLinkDisplayed = false;
+		try {
+			isSigninLinkDisplayed=lnkSigin.isDisplayed();
+		}catch(Exception e) {
+			isSigninLinkDisplayed =false;
+		}
+		if(isSigninLinkDisplayed) {
+			txtUserName.clear();
+			txtUserName.sendKeys(name);
+			txtPassword.clear();
+			txtPassword.sendKeys(password);
+			btnLogin.click();
+		}
+		
+	}
+	
+	public void userLogout() {
+		lnkUsrProfile.click();
+		wait.until(ExpectedConditions.elementToBeClickable(lnkLogout)).click();
+		//lnkLogout.click();
 	}
 }
