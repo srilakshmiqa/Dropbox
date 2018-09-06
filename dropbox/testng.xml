@@ -2,10 +2,11 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="Suite">
  <parameter name="browserName" value="chrome"></parameter>
-  <parameter name="usrName" value="xxxx"></parameter>
-  <parameter name="usrPassword" value="xxx"></parameter>
+ <parameter name="browserLocation" value="/usr/local/bin/ChromeDriver"></parameter>
+  <parameter name="usrName" value="dropbox.subscription@gmail.com"></parameter>
+  <parameter name="usrPassword" value="Password@123"></parameter>
    <parameter name="filePath" value="c:\\file"></parameter>
-  <test name="Test">
+  <test name="SmokeTest">
    <classes>
    <class name="com.dropbox.testcases.VerifyLogin"/>
    <class name="com.dropbox.testcases.VerifyFileUpload"/>

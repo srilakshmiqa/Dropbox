@@ -1,6 +1,8 @@
 package com.dropbox.testcases;
 
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Optional;
@@ -14,13 +16,15 @@ public class VerifyLogin extends TestBase{
 	@BeforeClass
 	public void objectsIntialization() {
 		basePage = PageFactory.initElements(driver, BasePage.class);
+		wait = new WebDriverWait(driver,50);
 	}
 	@Parameters({"usrName","usrPassword"})
 	@Test
-	public void verifyLogin(@Optional("usename")String uname, @Optional("password")String pwd) {
-		System.out.println("test");
-		basePage.lnkSigin.click();
+	public void verifyLogin(@Optional("dropbox.subscription@gmail.com")String uname, @Optional("Password@123")String pwd) throws InterruptedException {
+		
 		basePage.userLogin(uname, pwd);
+		Thread.sleep(5000);
+		wait.until(ExpectedConditions.visibilityOf(basePage.lnkUsrProfile));
 		Assert.assertTrue(basePage.lnkUsrProfile.isDisplayed());
 	}
 }

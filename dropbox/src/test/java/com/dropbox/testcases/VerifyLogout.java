@@ -18,6 +18,6 @@ public class VerifyLogout extends TestBase{
   @Test
   public void verifyUsrLogout() {
 	 basePage.userLogout();
-	 Assert.assertTrue(basePage.lnkSigin.isDisplayed(), "User may logged-ed out succesfully");
+	 Assert.assertTrue(basePage.lnkSigin.isDisplayed(), "User may have logged out succesfully");
   }
 }

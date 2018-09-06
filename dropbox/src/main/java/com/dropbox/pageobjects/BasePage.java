@@ -19,16 +19,16 @@ public class BasePage {
 		this.driver =driver;
 	}
 	
-	@FindBy(linkText="Sign in")
+	@FindBy(partialLinkText="Sign in")
 	public WebElement lnkSigin;
 	
-	@FindBy(name="login_email")
+	@FindBy(xpath="//div[@id='outer-frame']//input[@name='login_email']")
 	public WebElement txtUserName;
 	
-	@FindBy(name="login_password")
+	@FindBy(xpath="//div[@id='outer-frame']//input[@name='login_password']")
 	public WebElement txtPassword;
 	
-	@FindBy(className="signin-text")
+	@FindBy(className="login-button signin-button button-primary")
 	public WebElement btnLogin;
 	
 	@FindBy(className="mc-avatar")
@@ -40,7 +40,7 @@ public class BasePage {
 	public void userLogin(String name, String password) {
 		boolean isSigninLinkDisplayed = false;
 		try {
-			isSigninLinkDisplayed=lnkSigin.isDisplayed();
+			isSigninLinkDisplayed=btnLogin.isDisplayed();
 		}catch(Exception e) {
 			isSigninLinkDisplayed =false;
 		}
@@ -49,7 +49,8 @@ public class BasePage {
 			txtUserName.sendKeys(name);
 			txtPassword.clear();
 			txtPassword.sendKeys(password);
-			btnLogin.click();
+			//btnLogin.click();
+			btnLogin.submit();
 		}
 		
 	}
