@@ -27,7 +27,7 @@ public class TestBase {
 		
 		switch(bname.toLowerCase()) {
 		case "chrome":
-			System.setProperty("webdriver.chrome.driver", "E:\\AutomationWorkSpace\\chromedriver.exe");
+			System.setProperty("webdriver.chrome.driver", "\\Users\\vimal\\git\\dropbox\\dropbox\\webdriver\\chromedriver.exe");
 			driver = new ChromeDriver();
 		case "ie":
 			System.setProperty("webdriver.ie.driver", "E:\\AutomationWorkSpace\\internetexplorer.exe");

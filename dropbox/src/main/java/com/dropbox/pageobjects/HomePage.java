@@ -41,8 +41,18 @@ public class HomePage {
 	@FindBy(className="action-delete mc-popover-content-item")
 	public WebElement lnkDelete;
 
-	//@FindBy(className="")
-	//public WebElement lnkConfirmdelete;
+	@FindBy(className="")
+	public WebElement lnkConfirmdelete;
 
+	
+	//Use Case 5 : Searching for a file name
+	
+	@FindBy(className="search-bar__text-input")
+	public WebElement txtSearchbox;
+	
+	
+	//Enter 
 
+	
+	
 }
